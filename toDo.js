@@ -4,11 +4,16 @@ Uma tarefa consiste em um identificador, uma descrição e um atributo para tare
 
 Funcionalidades Implementadas
 
+Funcionalidade          Método          Rota
 
-
-
-
-
+Criar nova lista        Post            /lista
+Renomear lista          Put             /lista/:id_lista 
+Apagar lista            Delete          /lista/:id_lista
+Listar listas           Get             /lista
+Criar nova tarefa       Post            /lista/:id_lista
+Alternar tarefa feita   Put             /lista/:id_lista/tarefa/:id_tarefa
+Apagar tarefa           Delete          /lista/:id_lista/tarefa/:id_tarefa
+Listar tarefas          Get             /lista/:id_lista/tarefa
 */
 
 
