@@ -1,0 +1,16 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "toDoList application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json",
+    "node",
+    "RestfuAPis"
+  ],
+  "author": "Pedro Henrique",
+  "license": "ISC"
+}
