@@ -97,11 +97,52 @@ function ListaDAO(){
         };
     };
 
-    this.alternaTarefa = {};
+    this.alternaTarefa = function(tarefaID, listaID){
 
-    this.apagarTarefa = {};
+        //Percorrer tarefas da lista
+        for(var i = 0; i< this.listas[listaID].tarefas.length; i++){
+            
+            //Quando encontrar a a tarefa
+            if (this.listas[listaID].tarefas[i].id == tarefaID){
+                
+                //Troca valor da propriedade 
+                this.listas[listaID].tarefas[i].completa =
+                !this.listas[listaID].tarefas[i].completa;
 
-    this.getTarefa = {};
+                return{
+                    success: true,
+                    message: "Tarefa \'" + tarefaID + "\': "
+                                + this.listas[listaID].tarefas[i].completa
+                };
+            }        
+        }
+
+        return{
+            success: false, message: "Tarefa \'" + tarefaID + "\' não encontrada"
+        };
+
+    };
+
+    this.apagarTarefa = function(listaID, tarefaID) {
+        
+        //Percorre as tarefas da lista
+        for(var i = 0; i< this.listas[listaID].tarefas.length; i++){
+            
+            //Quando encontrar a tarefa
+            if (this.listas[listaID].tarefas[i].id == tarefaID){
+
+                //Apaga a tarefa do array de tarefas da lista
+                this.listas[listaID].tarefas.splice(1,i);
+                console.log("ListaDAO: Tarefa \'%s\' apagada com sucesso", tarefaID);
+                break;
+
+            }
+        }
+    };
+
+    this.getTarefa = function(listaID){
+        return this.listas[listaID].tarefas;
+    };
 
 }
 
