@@ -1,5 +1,22 @@
 //DAO -> Data Acess Object
 
+/*Funcionalidades Implementadas
+
+Funcionalidade          Método          Rota
+
+Criar nova lista        Post            /lista
+Renomear lista          Put             /lista/:id_lista 
+Apagar lista            Delete          /lista/:id_lista
+Listar listas           Get             /lista
+Criar nova tarefa       Post            /lista/:id_lista
+Alternar tarefa feita   Put             /lista/:id_lista/tarefa/:id_tarefa
+Apagar tarefa           Delete          /lista/:id_lista/tarefa/:id_tarefa
+Listar tarefas          Get             /lista/:id_lista/tarefa
+*/
+
+
+
+
 function ListaDAO(){
 
     var listas = {};
@@ -69,7 +86,7 @@ function ListaDAO(){
         }  
     };
 
-    this.getLista = function(){
+    this.getListas = function(){
 
         return this.listas;
     
@@ -140,7 +157,7 @@ function ListaDAO(){
         }
     };
 
-    this.getTarefa = function(listaID){
+    this.getTarefas = function(listaID){
         return this.listas[listaID].tarefas;
     };
 
