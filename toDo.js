@@ -21,13 +21,14 @@ Uma tarefa consiste em um identificador, uma descrição e um atributo para tare
 
 // Importando módulos
 var express = require("express");
-var bodyParser = require("body-parser");
+var http = require("http");
 var ListaDAO = require("./ListaDAO");
-const { listas } = require("./ListaDAO");
+
 
 var app = express();
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.use(bodyParser.json());
+
 
 
 //Rotas por funcionalidades
@@ -145,6 +146,40 @@ app.get("/lista/:id_lista/tarefa", function(request, response){
     response.json(ListaDAO.getTarefas(idLista));
     response.end();
 });
+
+
+app.get("/user", function(request, response){
+    var options = {
+        method: "GET",
+        hotsname: "api.myjson.com",
+        path: "/bins/1ez5xx"
+    }
+    
+    var getUser = http.request(options, function(res){
+
+        var body = "";
+        response.setDefaultEncoding("utf8");
+        res.on("data", function(chunk){
+            body += chunk;
+        });
+    
+        res.on("end", function(){
+            response.json(JSON.parse(body));
+            response.status(200).end();
+        });
+    
+    });
+
+    getUser.on('error', function(error){
+        response.write(error.message);
+        response.status(404).end();
+    });
+
+
+    getUser.end();
+
+});
+
 
 
 app.listen(8080);
